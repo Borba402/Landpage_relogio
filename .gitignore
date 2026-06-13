@@ -1,0 +1,33 @@
+# Arquivos Sensíveis / Variáveis de Ambiente
+.env
+.env.local
+.env.*.local
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Histórico e Backups do Stitch (Opcional - mantendo fora para manter o repo limpo)
+old/
+
+# Arquivos do Sistema Operacional (Windows / macOS)
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Arquivos de Editores e IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.agents/
+.gemini/

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>EXO-CHRONO® | Smartwatch Premium de Alta Performance</title>
+    
+    <!-- Meta Tags de SEO e Otimização de Busca -->
+    <meta name="description" content="Acelere sua produtividade no trabalho e domine sua saúde. Conheça o EXO-CHRONO, o Smartwatch Premium original com notificações WhatsApp, monitoramento de sono e pressão. Garanta o seu com desconto exclusivo."/>
+    <meta name="robots" content="index, follow"/>
+    <meta property="og:title" content="EXO-CHRONO® | Smartwatch Premium de Alta Performance"/>
+    <meta property="og:description" content="Foco inabalável no trabalho + controle biológico no pulso. De R$ 289,00 por apenas R$ 187,00. Estoque limitado!"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="Imagens/img1.png"/>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#031427',
+                        'brand-onyx': '#0a0a0b',
+                        'brand-blue': '#2e7bff',
+                        'brand-blue-hover': '#1d68eb',
+                        'slate-gray': '#64748b',
+                        'surface-container': '#102034',
+                        'surface-container-low': '#0b1c30',
+                        'surface-container-high': '#1b2b3f',
+                        'surface-container-highest': '#26364a',
+                        'on-surface-bright': '#d3e4fe',
+                        'on-surface-muted': '#c7c6ca'
+                    },
+                    borderRadius: {
+                        'sm': '4px',
+                        'md': '8px',
+                        'lg': '12px',
+                        'xl': '24px',
+                        'full': '9999px'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts & Custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/custom.css"/>
+</head>
+<body class="bg-brand-bg text-on-surface-bright font-sans selection:bg-brand-blue selection:text-white overflow-x-hidden">
+
+    <!-- 1. Header (Navegação Fixa com Efeito Glassmorphism) -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-header">
+        <div class="flex justify-between items-center px-6 md:px-20 py-4 max-w-7xl mx-auto w-full">
+            <a href="#" class="flex items-center gap-2 group" id="nav-logo">
+                <!-- Ícone Minimalista de Relógio SVG -->
+                <svg class="w-8 h-8 text-brand-blue transition-transform group-hover:rotate-12 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+                    <path d="M12 7v5l3 2" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M12 2v1M12 21v1M2 12h1M21 12h1" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+                <span class="font-extrabold text-xl tracking-tighter text-white">EXO-CHRONO<span class="text-brand-blue">®</span></span>
+            </a>
+            <a href="#offer" class="hidden sm:inline-block font-semibold text-xs tracking-wider text-white bg-brand-blue hover:bg-brand-blue-hover px-6 py-3 rounded-sm btn-sweep transition-all duration-300 uppercase shadow-lg shadow-brand-blue/20" id="nav-cta">
+                Garantir Meu Acesso
+            </a>
+        </div>
+    </header>
+
+    <!-- ⏱ BARRA DE URGÊNCIA — TIMER DE CONTAGEM REGRESSIVA -->
+    <div id="urgency-bar" class="w-full bg-gradient-to-r from-red-900/80 via-red-800/90 to-red-900/80 border-b border-red-500/30 py-2 px-4 text-center z-40 relative">
+        <p class="text-xs md:text-sm font-bold text-white flex items-center justify-center gap-2 flex-wrap">
+            <span class="inline-flex items-center gap-1 text-red-300">
+                <svg class="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                ATENÇÃO:
+            </span>
+            <span class="text-white">Esta oferta com desconto expira em</span>
+            <span id="countdown-timer" class="font-mono font-black text-red-300 text-base md:text-lg tracking-wider bg-red-950/60 px-3 py-0.5 rounded border border-red-500/40">15:00</span>
+            <span class="text-white">— Garanta agora antes que acabe!</span>
+        </p>
+    </div>
+
+    <main class="pt-20">
+        <!-- 2. HERO — Layout Split 2 Colunas: Copy+Preço Esquerda | Relógio Direita -->
+        <section id="hero" class="relative overflow-hidden">
+            <!-- Glow de fundo azul -->
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-blue/15 rounded-full blur-[120px] pointer-events-none -z-10 translate-x-1/3 -translate-y-1/4"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-blue/8 rounded-full blur-[100px] pointer-events-none -z-10 -translate-x-1/3"></div>
+
+            <div class="max-w-7xl mx-auto px-6 md:px-16 w-full min-h-[calc(100vh-80px)] flex items-center">
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center w-full py-10 md:py-0">
+
+                    <!-- COLUNA ESQUERDA: Copy, Preço e CTAs -->
+                    <div class="flex flex-col justify-center order-2 md:order-1">
+                        <span class="text-xs font-bold text-brand-blue uppercase tracking-[0.25em] mb-5 bg-brand-blue/10 px-4 py-1.5 rounded-full border border-brand-blue/20 w-fit">
+                            🔥 Lote Limitado — 17 unidades
+                        </span>
+
+                        <h1 class="text-4xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight mb-5">
+                            Seu Foco no<br/>
+                            <span class="text-gradient-blue">Trabalho.</span><br/>
+                            Sua Saúde sob<br/>
+                            <span class="text-gradient-premium">Controle Total.</span>
+                        </h1>
+
+                        <p class="text-base md:text-lg text-slate-gray mb-6 leading-relaxed max-w-lg">
+                            Receba alertas do WhatsApp, monitore batimentos e qualidade do sono — tudo no pulso, <strong class="text-white">sem depender do celular</strong>. 100% em Português.
+                        </p>
+
+                        <!-- Preço Exposto no Hero para Máximo Impacto -->
+                        <div class="flex items-baseline gap-3 mb-7">
+                            <span class="text-slate-gray line-through text-base opacity-70">R$ 289,00</span>
+                            <span class="text-4xl lg:text-5xl font-black text-white">R$ 187,00</span>
+                            <span class="text-xs text-brand-blue font-bold bg-brand-blue/10 px-2 py-1 rounded border border-brand-blue/20">-35%</span>
+                        </div>
+                        <p class="text-xs text-slate-gray mb-8">ou 12x de R$ 18,35 no cartão — Frete Grátis</p>
+
+                        <!-- CTAs Primários — Grandes e Visíveis -->
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#offer"
+                               class="bg-brand-blue hover:bg-brand-blue-hover text-white font-extrabold text-base md:text-lg px-8 py-5 rounded-sm btn-sweep animate-glow-pulse transition-all duration-300 uppercase tracking-wide shadow-2xl shadow-brand-blue/30 text-center flex-1 sm:flex-none"
+                               id="hero-primary-cta">
+                                ⚡ Comprar Agora
+                            </a>
+                            <a href="#features"
+                               class="border border-white/15 hover:border-brand-blue/50 text-white font-semibold text-base px-8 py-5 rounded-sm transition-all duration-300 text-center bg-white/5"
+                               id="hero-secondary-cta">
+                                Ver Benefícios
+                            </a>
+                        </div>
+
+                        <!-- Trust Bar — Abaixo dos CTAs -->
+                        <div class="flex items-center gap-5 mt-7 flex-wrap">
+                            <span class="flex items-center gap-1.5 text-[11px] text-slate-gray font-medium">
+                                <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Garantia 30 dias
+                            </span>
+                            <span class="flex items-center gap-1.5 text-[11px] text-slate-gray font-medium">
+                                <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                100% Original
+                            </span>
+                            <span class="flex items-center gap-1.5 text-[11px] text-slate-gray font-medium">
+                                <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Frete Grátis
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- COLUNA DIREITA: Relógio com Animação Tecnológica Orbital -->
+                    <div class="order-1 md:order-2 flex items-center justify-center relative py-8">
+
+                        <!-- Halo de glow azul de fundo -->
+                        <div class="absolute w-[280px] h-[280px] md:w-[400px] md:h-[400px] bg-brand-blue/25 rounded-full blur-[70px] pointer-events-none"></div>
+
+                        <!-- Container da Animação Orbital (wrapper posicionado) -->
+                        <div class="relative flex items-center justify-center w-[300px] h-[300px] md:w-[460px] md:h-[460px]">
+
+                            <!-- Anel orbital externo — gira lentamente -->
+                            <div class="absolute inset-0 rounded-full border border-brand-blue/20 watch-orbit-slow"></div>
+
+                            <!-- Anel orbital médio com ponto de luz -->
+                            <div class="absolute inset-[20px] md:inset-[30px] rounded-full watch-orbit-medium">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-brand-blue rounded-full shadow-[0_0_10px_4px_rgba(46,123,255,0.8)]"></div>
+                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 bg-brand-blue/60 rounded-full shadow-[0_0_6px_2px_rgba(46,123,255,0.5)]"></div>
+                                <div class="w-full h-full rounded-full border border-brand-blue/30 border-dashed"></div>
+                            </div>
+
+                            <!-- Anel orbital interno — gira ao contrário -->
+                            <div class="absolute inset-[45px] md:inset-[65px] rounded-full watch-orbit-reverse">
+                                <div class="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-cyan-400 rounded-full shadow-[0_0_8px_3px_rgba(34,211,238,0.7)]"></div>
+                                <div class="w-full h-full rounded-full border border-cyan-400/20"></div>
+                            </div>
+
+                            <!-- Dados flutuantes / HUD elements -->
+                            <div class="absolute top-4 left-4 md:top-6 md:left-2 text-[9px] md:text-[10px] font-mono text-brand-blue/70 font-bold leading-tight watch-hud-pulse">
+                                <div>BPM: <span class="text-brand-blue">72</span></div>
+                                <div>SPO2: <span class="text-brand-blue">98%</span></div>
+                            </div>
+                            <div class="absolute bottom-4 right-4 md:bottom-6 md:right-2 text-[9px] md:text-[10px] font-mono text-cyan-400/70 font-bold leading-tight text-right watch-hud-pulse-delay">
+                                <div>SONO: <span class="text-cyan-400">7h32m</span></div>
+                                <div>STEPS: <span class="text-cyan-400">8.4K</span></div>
+                            </div>
+
+                            <!-- Linha de scanner horizontal -->
+                            <div class="absolute inset-[45px] md:inset-[65px] rounded-full overflow-hidden pointer-events-none opacity-40">
+                                <div class="watch-scanner-line"></div>
+                            </div>
+
+                            <!-- IMAGEM DO RELÓGIO — mix-blend-mode remove fundo branco -->
+                            <img
+                                src="Imagens/img1.png"
+                                alt="Smartwatch Premium EXO-CHRONO"
+                                class="relative z-10 w-[220px] md:w-[320px] lg:w-[380px] h-auto object-contain animate-float-3d select-none watch-img-blend"
+                                id="hero-image"
+                            />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Divisor decorativo inferior -->
+            <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-blue/30 to-transparent"></div>
+        </section>
+
+        <!-- 3. Seção de Produtividade Sem Limites (Quebra de Objeções - WhatsApp / Notificações - img2) -->
+        <section id="features" class="reveal py-24 md:py-32 px-6 md:px-20 max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+                <div class="order-2 md:order-1 flex flex-col justify-center">
+                    <span class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-3 block">Produtividade Máxima</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                        Foco Inabalável. Nunca Mais Perca Mensagens de Clientes.
+                    </h2>
+                    <p class="text-base md:text-lg text-slate-gray mb-8 leading-relaxed">
+                        Esqueça a necessidade de destravar a tela do celular a cada minuto e cair na armadilha das redes sociais. Filtre as notificações que realmente importam. Saiba instantaneamente quando um cliente crucial te chama no <strong>WhatsApp</strong> ou quando recebe uma ligação de fechamento de negócios.
+                    </p>
+                    
+                    <!-- Ícones minimalistas para leitura rápida em F -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="flex items-center gap-3 p-4 glass-panel rounded-lg">
+                            <div class="p-2 rounded bg-green-500/10 text-green-400 flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.023-5.116-2.887-6.981C16.583 1.897 14.1 1.87 11.666 1.87c-5.438 0-9.863 4.419-9.866 9.862-.001 1.8.475 3.557 1.38 5.11L2.096 21.3l4.551-1.146zm12.39-7.106c-.33-.165-1.951-.963-2.251-1.072-.3-.11-.518-.165-.735.165-.218.33-.842 1.072-1.033 1.293-.19.22-.38.247-.71.082-.33-.165-1.393-.513-2.653-1.638-.98-.874-1.642-1.953-1.834-2.282-.19-.33-.02-.508.145-.671.148-.148.33-.385.495-.578.165-.192.22-.33.33-.55.11-.22.055-.413-.028-.578-.083-.165-.735-1.771-1.007-2.43-.265-.643-.53-.556-.73-.566l-.622-.012c-.218 0-.573.082-.873.413-.3.33-1.146 1.12-1.146 2.732 0 1.611 1.173 3.167 1.337 3.388.164.22 2.308 3.522 5.59 4.943.78.338 1.39.54 1.865.69.784.25 1.498.214 2.062.13.629-.094 1.952-.798 2.224-1.57.272-.77.272-1.43.19-1.57-.082-.14-.3-.22-.63-.385z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white uppercase">WhatsApp</h4>
+                                <p class="text-[11px] text-slate-gray font-medium">Alertas Rápidos</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass-panel rounded-lg">
+                            <div class="p-2 rounded bg-brand-blue/10 text-brand-blue flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white uppercase">Ligações</h4>
+                                <p class="text-[11px] text-slate-gray font-medium">Identificador</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass-panel rounded-lg">
+                            <div class="p-2 rounded bg-purple-500/10 text-purple-400 flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white uppercase">Agenda</h4>
+                                <p class="text-[11px] text-slate-gray font-medium">Lembretes Úteis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imagem do smartwatch focando na tela de notificações (img2) -->
+                <div class="order-1 md:order-2 rounded-lg overflow-hidden border border-white/5 shadow-2xl bg-brand-onyx/40">
+                    <img src="Imagens/img2.png" alt="Close-up da tela do Smartwatch EXO-CHRONO exibindo mensagens do WhatsApp" class="w-full h-auto object-cover select-none"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Seção de Saúde e Biometria (Sensor e Batimentos com Layout de 2 Colunas - img4) -->
+        <section class="reveal bg-brand-onyx py-24 md:py-32">
+            <div class="px-6 md:px-20 max-w-7xl mx-auto w-full">
+                <div class="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+                    <span class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-3 block">Performance Biológica</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">
+                        O Controle Biológico no Seu Pulso
+                    </h2>
+                    <p class="text-base md:text-lg text-slate-gray leading-relaxed">
+                        A performance no trabalho está diretamente ligada à sua clareza mental e energia física. Monitore os sinais vitais com sensores precisos e use os dados a seu favor.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-12 gap-12 items-center">
+                    <!-- Foto Ilustrativa de Sensor/Saúde (img4) -->
+                    <div class="md:col-span-5 rounded-lg overflow-hidden border border-white/5 shadow-2xl bg-brand-bg">
+                        <img src="Imagens/img4.jpg" alt="Monitoramento de Saúde ativo com Smartwatch Premium" class="w-full h-auto object-cover select-none"/>
+                    </div>
+
+                    <!-- Cards de Biometria (Padrão F) -->
+                    <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Batimento Cardíaco com Ícone de Pulso -->
+                        <div class="p-6 rounded-lg glass-panel flex flex-col justify-between h-[280px] hover:border-brand-blue/30 transition-all duration-300 bg-brand-bg/40">
+                            <div class="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-7 h-7 text-red-500 animate-heart-pulse" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Batimentos Cardíacos 24/7</h3>
+                                <p class="text-xs text-slate-gray leading-relaxed">
+                                    Sensores ópticos inteligentes monitoram o coração minuto a minuto. Fique alerta a picos de estresse no ambiente de trabalho.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Lembrete de Hidratação / Hábitos -->
+                        <div class="p-6 rounded-lg glass-panel flex flex-col justify-between h-[280px] hover:border-brand-blue/30 transition-all duration-300 bg-brand-bg/40">
+                            <div class="w-12 h-12 bg-brand-blue/10 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-7 h-7 text-brand-blue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-11.314l.707.707m11.314 11.314l.707-.707M12 5c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Lembrete Ativo de Hábitos</h3>
+                                <p class="text-xs text-slate-gray leading-relaxed">
+                                    Notificações sutis lembram você de beber água e se levantar. Evite o cansaço mental causado pela desidratação prolongada.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Monitoramento de Sono -->
+                        <div class="p-6 rounded-lg glass-panel flex flex-col justify-between h-[280px] hover:border-brand-blue/30 transition-all duration-300 bg-brand-bg/40 sm:col-span-2">
+                            <div class="w-12 h-12 bg-amber-500/10 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-7 h-7 text-amber-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.1 2.9C8 2.9 4.7 6.2 4.7 10.3c0 3.7 2.7 6.8 6.2 7.3-.2-.5-.3-1.1-.3-1.7 0-3.3 2.7-6 6-6 .6 0 1.2.1 1.7.3-.5-3.5-3.6-6.2-7.3-6.2zm7.2 9.1c-1.9 0-3.4 1.5-3.4 3.4 0 1.9 1.5 3.4 3.4 3.4.6 0 1.2-.2 1.7-.5-1.1.9-2.5 1.5-4.1 1.5-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4c1.6 0 3 .6 4.1 1.5-.5-.3-1.1-.5-1.7-.5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Análise do Sono Profundo</h3>
+                                <p class="text-xs text-slate-gray leading-relaxed">
+                                    Acorde com energia total. Compreenda a qualidade das suas fases de sono leve, profundo e REM para ajustar sua rotina e maximizar sua recuperação biológica para o próximo desafio comercial.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Seção de Galeria & Detalhes com imagens locais (img3) -->
+        <section class="reveal py-24 md:py-32 px-6 md:px-20 max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-3 block">Estilo Versátil</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">
+                        Desempenho Extremo. Design Impecável.
+                    </h2>
+                    <p class="text-base md:text-lg text-slate-gray mb-8 leading-relaxed">
+                        Feito para quem transita do escritório executivo para os treinos de alta intensidade. Com materiais nobres e uma bateria que acompanha seu ritmo sem te deixar na mão, ele é o complemento ideal da sua rotina de sucesso.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white text-sm font-medium">Compatibilidade universal com Android e iOS</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white text-sm font-medium">Bateria de até 7 dias em uso contínuo</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-white text-sm font-medium">Construção Premium resistente à água (IP68)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Imagem do smartwatch de outro ângulo premium (img3) -->
+                <div class="rounded-lg overflow-hidden border border-white/5 shadow-2xl bg-brand-onyx/40">
+                    <img src="Imagens/img3.jpg" alt="Smartwatch EXO-CHRONO em um contexto executivo premium" class="w-full h-auto object-cover select-none"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Seção de Depoimentos (Prova Social) -->
+        <section class="reveal bg-brand-onyx py-24 md:py-32">
+            <div class="px-6 md:px-20 max-w-7xl mx-auto w-full">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-3 block">Depoimentos reais</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white">
+                        O Veredito de Quem Vive em Alta Performance
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Depoimento 1 (Ricardo M. - CEO) -->
+                    <div class="p-8 rounded-lg glass-panel flex flex-col justify-between bg-brand-bg/50">
+                        <div class="flex text-amber-400 gap-1 mb-6">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="text-sm text-on-surface-bright italic mb-6 leading-relaxed">
+                            "Absolutamente essencial na minha rotina de negócios. O EXO-CHRONO me permite triar mensagens do WhatsApp de clientes rapidamente sem precisar mexer no celular e perder o foco. A bateria dura a semana toda."
+                        </p>
+                        <div class="flex items-center gap-3 border-t border-white/10 pt-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-blue/20 flex items-center justify-center text-brand-blue font-bold text-sm">
+                                RM
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Ricardo M.</h4>
+                                <p class="text-[10px] text-slate-gray">CEO & Investidor</p>
+                            </div>
+                            <div class="ml-auto flex items-center gap-1 text-emerald-400">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-[9px] font-bold uppercase tracking-wider">Verificado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 2 (Juliana S. - Atleta) -->
+                    <div class="p-8 rounded-lg glass-panel flex flex-col justify-between bg-brand-bg/50">
+                        <div class="flex text-amber-400 gap-1 mb-6">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="text-sm text-on-surface-bright italic mb-6 leading-relaxed">
+                            "A precisão do sensor cardíaco é incrível. Consigo monitorar minha frequência cardíaca sob esforço nos meus treinos e entender perfeitamente minhas fases de sono profundo para otimizar meu descanso diário."
+                        </p>
+                        <div class="flex items-center gap-3 border-t border-white/10 pt-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-blue/20 flex items-center justify-center text-brand-blue font-bold text-sm">
+                                JS
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Juliana S.</h4>
+                                <p class="text-[10px] text-slate-gray">Atleta de Performance</p>
+                            </div>
+                            <div class="ml-auto flex items-center gap-1 text-emerald-400">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-[9px] font-bold uppercase tracking-wider">Verificado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 3 (Lucas F. - Dev Sênior) -->
+                    <div class="p-8 rounded-lg glass-panel flex flex-col justify-between bg-brand-bg/50">
+                        <div class="flex text-amber-400 gap-1 mb-6">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="text-sm text-on-surface-bright italic mb-6 leading-relaxed">
+                            "A interface UX é limpa e extremamente responsiva. Integração fácil com o smartphone e suporte 100% em português. Não fico mais preso a redes sociais no trabalho porque controlo tudo do relógio."
+                        </p>
+                        <div class="flex items-center gap-3 border-t border-white/10 pt-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-blue/20 flex items-center justify-center text-brand-blue font-bold text-sm">
+                                LF
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white">Lucas F.</h4>
+                                <p class="text-[10px] text-slate-gray">Desenvolvedor Sênior</p>
+                            </div>
+                            <div class="ml-auto flex items-center gap-1 text-emerald-400">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-[9px] font-bold uppercase tracking-wider">Verificado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Seção de Especificações Técnicas Reais (Escaneáveis com img5) -->
+        <section class="reveal py-24 md:py-32 px-6 md:px-20 max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Grid de Especificações (Lado Esquerdo) -->
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-12">Especificações de Engenharia</h2>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-6 bg-brand-onyx border border-white/5 rounded-lg hover:border-brand-blue/20 transition-colors duration-300">
+                            <span class="text-xs font-bold text-brand-blue tracking-wider block mb-2 uppercase">Interface</span>
+                            <p class="text-sm font-semibold text-white">100% Traduzido para Português</p>
+                        </div>
+                        <div class="p-6 bg-brand-onyx border border-white/5 rounded-lg hover:border-brand-blue/20 transition-colors duration-300">
+                            <span class="text-xs font-bold text-brand-blue tracking-wider block mb-2 uppercase">Biometria</span>
+                            <p class="text-sm font-semibold text-white">Pressão, Oxigênio & Sono</p>
+                        </div>
+                        <div class="p-6 bg-brand-onyx border border-white/5 rounded-lg hover:border-brand-blue/20 transition-colors duration-300">
+                            <span class="text-xs font-bold text-brand-blue tracking-wider block mb-2 uppercase">Conectividade</span>
+                            <p class="text-sm font-semibold text-white">Compatível com Android e iOS</p>
+                        </div>
+                        <div class="p-6 bg-brand-onyx border border-white/5 rounded-lg hover:border-brand-blue/20 transition-colors duration-300">
+                            <span class="text-xs font-bold text-brand-blue tracking-wider block mb-2 uppercase">Resistência</span>
+                            <p class="text-sm font-semibold text-white">Certificação IP68 Resistente à Água</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalhes do Hardware Premium (Lado Direito - img5) -->
+                <div class="rounded-lg overflow-hidden border border-white/5 shadow-2xl bg-brand-onyx/40">
+                    <img src="Imagens/img5.jpg" alt="Detalhes da pulseira e acabamento premium do Smartwatch EXO-CHRONO" class="w-full h-auto object-cover select-none"/>
+                </div>
+            </div>
+            
+            <!-- 8. Manifesto de Autenticidade / Garantia (Gatilho da Segurança e Autenticidade) -->
+            <div class="mt-20 p-8 md:p-12 rounded-lg glass-panel border border-brand-blue/20 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden bg-brand-onyx/50">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="flex-shrink-0 w-20 h-20 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                        Garantia Inabalável de Autenticidade EXO-CHRONO
+                    </h3>
+                    <p class="text-sm md:text-base text-slate-gray leading-relaxed mb-4">
+                        Evite falsificações perigosas sem sensores reais. O EXO-CHRONO original possui número de série único gravado no verso, caixa selada e manual em português. Oferecemos **garantia incondicional de 30 dias** contra falhas ou insatisfação. Se não ficar impressionado com o impacto na sua produtividade, devolvemos seu dinheiro integralmente, sem burocracia.
+                    </p>
+                    <span class="text-xs text-white font-bold uppercase tracking-wider block bg-emerald-500/10 border border-emerald-500/20 w-fit px-3 py-1 rounded">
+                        100% Original | Nota Fiscal Inclusa
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Banner de Conexão com Estilo de Vida (img6) -->
+        <section class="reveal max-w-7xl mx-auto px-6 w-full mb-12">
+            <div class="rounded-lg overflow-hidden border border-white/5 relative h-[300px] md:h-[400px] flex items-center">
+                <!-- Imagem de fundo (img6) -->
+                <img src="Imagens/img6.jpg" alt="Smartwatch EXO-CHRONO no pulso em um dia de conquistas" class="absolute inset-0 w-full h-full object-cover select-none brightness-50 z-0"/>
+                
+                <!-- Gradiente de escurecimento para leitura -->
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-onyx via-brand-onyx/70 to-transparent z-10"></div>
+                
+                <div class="relative z-20 max-w-lg pl-8 md:pl-16">
+                    <span class="text-xs font-bold text-brand-blue uppercase tracking-widest block mb-2">Engenharia Sob Medida</span>
+                    <h3 class="text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+                        Construído para Superar Limites Diários
+                    </h3>
+                    <p class="text-sm md:text-base text-slate-gray mb-6 leading-relaxed">
+                        Mais do que um relógio de tecnologia avançada, um manifesto de estilo de vida focado em produtividade e alto rendimento.
+                    </p>
+                    <a href="#offer" class="text-xs text-white hover:text-brand-blue font-bold uppercase tracking-wider border-b border-brand-blue pb-1 transition-colors">
+                        Garantir Promoção Exclusiva &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Seção de Oferta & Preço (Ancoragem e Urgência CRO) -->
+        <section id="offer" class="reveal py-24 md:py-32 px-6">
+            <div class="max-w-2xl mx-auto glass-panel p-10 md:p-16 rounded-lg border border-brand-blue/30 text-center shadow-[0_0_80px_rgba(46,123,255,0.12)] bg-brand-onyx/60 relative overflow-hidden">
+                <!-- Luz de fundo interna -->
+                <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/5 to-transparent pointer-events-none"></div>
+                
+                <span class="text-xs font-bold text-brand-blue bg-brand-blue/10 border border-brand-blue/20 px-4 py-1.5 rounded-full mb-6 inline-block uppercase tracking-widest">
+                    Lote Promocional de Lançamento
+                </span>
+                
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Assuma o Controle do Seu Tempo</h2>
+                
+                <!-- Ancoragem de Preço Exposta -->
+                <div class="flex flex-col items-center gap-1 mb-10">
+                    <span class="text-base text-slate-gray line-through opacity-60">De R$ 289,00</span>
+                    <span class="text-5xl md:text-7xl font-black text-white">R$ 187,00</span>
+                    <span class="text-xs text-brand-blue font-bold tracking-wide mt-2">
+                        ou em até 12x no cartão de crédito
+                    </span>
+                </div>
+                
+                <!-- Botão de Compra Focado -->
+                <a href="https://checkout.exochrono.com/buy" class="block w-full bg-brand-blue hover:bg-brand-blue-hover text-white font-extrabold text-lg md:text-xl py-6 rounded-sm btn-sweep transition-all duration-300 uppercase tracking-tighter shadow-lg shadow-brand-blue/30" id="final-checkout-btn">
+                    EU QUERO O MEU AGORA COM DESCONTO
+                </a>
+                
+                <!-- Urgência e Escassez -->
+                <p class="mt-6 text-xs text-slate-gray font-medium flex items-center justify-center gap-1.5">
+                    <span class="inline-block w-2.5 h-2.5 bg-red-500 rounded-full animate-ping"></span>
+                    Apenas 17 unidades com frete grátis restante em estoque.
+                </p>
+                
+                <!-- Selos de Segurança adicionais -->
+                <div class="mt-8 flex justify-center gap-6 opacity-60">
+                    <span class="text-[10px] text-slate-gray font-semibold uppercase tracking-wider flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9c.522-.521 1.24-.8 1.968-.767a5.503 5.503 0 014.286 1.705 5.503 5.503 0 014.286-1.705c.728-.033 1.446.246 1.968.767a5.523 5.523 0 011.666 4.3c-.09 3.195-2.822 5.922-6.527 9.4a1 1 0 01-1.386 0C4.693 15.122 1.96 12.395 1.87 9.2a5.523 5.523 0 011.666-4.3z" clip-rule="evenodd"></path></svg>
+                        Compra 100% Segura
+                    </span>
+                    <span class="text-[10px] text-slate-gray font-semibold uppercase tracking-wider flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"></path></svg>
+                        Garantia Estendida
+                    </span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 10. Footer Semântico -->
+    <footer class="bg-brand-onyx border-t border-white/5 relative">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 px-6 md:px-20 py-12 max-w-7xl mx-auto w-full">
+            <div class="flex flex-col items-center md:items-start gap-3">
+                <span class="font-extrabold text-lg text-white">EXO-CHRONO<span class="text-brand-blue">®</span></span>
+                <span class="text-[10px] text-slate-gray tracking-wider uppercase">
+                    © 2026 PRECISION ENGINEERING LTDA. TODOS OS DIREITOS RESERVADOS.
+                </span>
+            </div>
+            <div class="flex gap-6 text-[11px] text-slate-gray">
+                <a href="#privacy" class="hover:text-brand-blue transition-colors">Políticas de Privacidade</a>
+                <a href="#terms" class="hover:text-brand-blue transition-colors">Termos de Uso</a>
+                <a href="#support" class="hover:text-brand-blue transition-colors">Suporte ao Cliente</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 11. Sticky CTA Mobile (Oculto por padrão, ativado via JS após scroll do Hero) -->
+    <div id="sticky-cta" class="fixed bottom-0 left-0 w-full z-50 p-4 md:hidden transform translate-y-full opacity-0 transition-all duration-500 ease-out">
+        <a href="#offer" class="flex items-center justify-between bg-brand-blue text-white px-6 py-4 rounded-lg shadow-[0_-5px_30px_rgba(46,123,255,0.25)] btn-sweep font-bold" id="sticky-cta-btn">
+            <span class="text-xs uppercase tracking-wider">Garantir Meu Acesso</span>
+            <!-- Preço Promocional em destaque no Botão Mobile -->
+            <span class="text-sm font-black">R$ 187,00</span>
+        </a>
+    </div>
+
+    <!-- Scripts de Interação -->
+    <script src="assets/js/animations.js"></script>
+
+    <!-- ⏱ Script do Countdown Timer de Urgência (15 minutos, persiste na sessão) -->
+    <script>
+    (function() {
+        const DURATION = 15 * 60; // 15 minutos em segundos
+        const STORAGE_KEY = 'exo_timer_end';
+
+        function getEndTime() {
+            const stored = sessionStorage.getItem(STORAGE_KEY);
+            if (stored) return parseInt(stored, 10);
+            const end = Date.now() + DURATION * 1000;
+            sessionStorage.setItem(STORAGE_KEY, end);
+            return end;
+        }
+
+        const endTime = getEndTime();
+        const timerEl = document.getElementById('countdown-timer');
+        const urgencyBar = document.getElementById('urgency-bar');
+
+        function updateTimer() {
+            const remaining = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
+            const min = Math.floor(remaining / 60).toString().padStart(2, '0');
+            const sec = (remaining % 60).toString().padStart(2, '0');
+
+            if (timerEl) timerEl.textContent = min + ':' + sec;
+
+            if (remaining <= 0) {
+                // Timer zerou — mostra mensagem de urgência máxima
+                if (urgencyBar) {
+                    urgencyBar.className = urgencyBar.className.replace('from-red-900/80 via-red-800/90 to-red-900/80', 'from-red-950 via-red-900 to-red-950');
+                    urgencyBar.innerHTML = '<p class="text-sm font-black text-white flex items-center justify-center gap-2">'
+                        + '<svg class="w-4 h-4 text-red-400 animate-ping" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>'
+                        + '⚠️ DESCONTO EXPIRADO! Última chance — vagas quase esgotadas.'
+                        + '<a href="#offer" class="ml-3 bg-red-500 hover:bg-red-400 text-white text-xs font-black px-3 py-1 rounded uppercase tracking-wide">Garantir Agora</a>'
+                        + '</p>';
+                }
+                clearInterval(interval);
+                return;
+            }
+
+            // Pulsa vermelho nos últimos 60 segundos
+            if (remaining <= 60 && timerEl) {
+                timerEl.classList.add('text-red-400');
+                timerEl.classList.remove('text-red-300');
+            }
+        }
+
+        updateTimer();
+        const interval = setInterval(updateTimer, 1000);
+    })();
+    </script>
+</body>
+</html>
